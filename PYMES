@@ -1,0 +1,48 @@
+#include <iostream>
+
+class PYME{
+    private:
+        string Director;
+        int Numero_empleados;
+        float Cantidad_anios;
+
+    public:
+     
+        string Nombre_empresa;
+        string Razon_social;
+        string Direccion;
+        pyme(); 
+        mostrar_pyme();
+
+};
+
+PYME::pyme(){
+    std::cout << "Nombre del PYME: "<<endl;
+    std::cin >> Nombre_empresa; 
+
+    std::cout << "Razon social: "<<endl;
+    std::cin >> Razon_social; 
+
+    std::cout << "Ubicacion del PYME: "<<endl;
+    std::cin >> Direccion; 
+
+    std::cout << "Nombre del director: "<<endl;
+    std::cin >> Director; 
+
+    std::cout << "Numero de trabajadores en este PYME: "<<endl;
+    std::cin >> Numero_empleados; 
+
+    std::cout << "Ingreso anual "<<endl;
+    std::cin >> Cantidad_anios;    
+
+    cout << "Continuar?";
+}
+
+PYME::mostrar_pyme(){
+    cout << "Nombre del PYME: " << Nombre_empresa; 
+    cout << "Razon social: " << Razon_social;
+    cout << "Direccion: " << Direccion; 
+    cout << "Director: " << Director; 
+    cout << "Numero de trabajadores: " << Numero_empleados; 
+    cout << "Ingreso anual: " << Cantidad_anios;    
+}
