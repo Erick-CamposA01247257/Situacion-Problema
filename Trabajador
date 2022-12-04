@@ -1,0 +1,39 @@
+#include <iostream>
+
+
+class Trabajador : public PYME { 
+    private:
+        int Edad_Trabajador;
+        string Puesto_Trabajador;
+        float Sueldo_Trabajador;
+    public:
+        string Nombre_Trabajador;
+        Trabajadores();
+        mostrar_Trabajador();
+}; 
+
+
+Trabajador::Trabajadores(){
+    std::cout << "Nombre del trabajador ";
+    std::cin >> Nombre_Trabajador; 
+    std::cout << "Edad de "<<Nombre_Trabajador<<":";
+    std::cin >> Edad_trabajador; 
+    std::cout << "Puesto en la empresa de <<"Nombre_Trabajador<<":";
+    std::cin >> Puesto_trabajador; 
+    std::cout << "Sueldo de "<<Nombre_Trabajador<<":";
+    std::cin >> Sueldo_Trabajador; 
+
+ 
+    }
+    	cout << "Trabajador anadido con exito! Presiona una tecla para continuar.";
+}
+
+Trabajador::mostrar_Trabajador(){
+    cout << "Nombre del Trabajador: " << Nombre_Trabajador; 
+    cout << "Edad: " << Edad_trabajador; 
+    cout << "Puesto: " << Puesto_Trabajador; 
+    cout << "Sueldo: " << Sueldo_Trabajador; 
+    cout << "Nombre de la empresa donde trabaja: " << Nombre_empresa;
+    cout << "Razon social de la empresa donde trabaja: " << Razon_social;
+    cout << "Direccion de la empresa donde trabaja: " << Direccion;
+}
