@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <windows.h>
+#include <iostream>
+#define N 50
+#define P 3
+#define W 3 
+using namespace std;
+
+void menu();
+int CONSULTARPYME();
+string search;
+int search_break;
+#include "PYME.cpp"
+PYME pyme_arr[P];
+#include "Trabajador.cpp"
+Trabajador trabajador_arr[W];
+int contPYME = -1;
+int contaTra = -1;
+
+int main(){
+	menu();
+	getch();
+	return 0;
+}
+
+void menu(){
+	char op;
+	do{
+		cout << "  MENU PRINCIPAL"<<endl;
+		cout << "  (1) Agregar un PYME"<<endl;
+		cout << "  (2) Agregar un Trabajador"<<endl;
+		cout << "  (3) Consultar PYME"<<endl;
+		cout << "  (4) Consultar Trabajador"<<endl;
+		cout << "  (5) Cerrar"<<endl;
+		cout << "  Digite su eleccion: "<<endl;
+		cin >> op;
+		
+		if(op!='1' && op!='2' && op!='3' && op!='4' && op!='5'){
+			cout << "  Error, digite un valor valido.";
+			getch();
+		}
+			
+	}while(op!='1' && op!='2' && op!='3' && op!='4' && op!='5');
+	
+	
+	if (op=='1'){
+		if (contPYME < P-1){
+			contPYME += 1;
+			pyme_arr[contPYME].construir_pyme();
+
+		}
+		else {
+			cout << " Solo se puede agregar un trabajador a la vez";
+			cout << " Continuar?";
+		}
+		getch();
+		menu();
+	}
+	
+
+	if (op=='2'){
+		if (contPYME >= 0 && contaTra < W-1){
+	    contaTra += 1;
+ 		trabajador_arr[contaTra].construir_worker();
+		}
+		else if (contPYME <= 0){
+			cout << "  Es necesario crear un PYME primero";
+			cout << "  Continuar?";
+		}
+		else if (contaTra >= W-1){
+			cout << "  Solo se puede agregar un elemento a la vez";
+			cout << "  Continuar?";
+		}
+		getch();  
+		menu(); 
+	}
+	
+	if (op=='3'){
+		std::cout << "Que PYME desea consultar? ";
+		std::cin >> search;
+		int i = CONSULTARPYME();
+		if (i >= 0){
+			pyme_arr[i].imprimir_pyme();
+			cout << "Continuar?";
+			getch(); 
+		}
+		else {
+			cout << "La PYME no existe en la base de datos";
+			cout << "";
+			getch();  
+		}
+		menu();
+	}
+
+	if (op=='4'){
+		search_break = 0;
+		std::cout << "Introduzca el nombre del trabajador que desea consultar: ";
+    	std::cin >> search;
+    	for (int i = 0; i < P; i++) {
+			if (trabajador_arr[i].name_Trabajador == search){
+				search_break = 1;
+				trabajador_arr[i].imprimir_worker();
+				cout << "Continuar?";
+				getch();  
+			}
+    	}
+		if (search_break == 0){
+				cout << "No hay coincidencias en los datos ingresados";
+				cout << "Continuar?";
+				getch();  
+		}
+		menu(); 
+	}
+	
+	if (op=='5')
+		exit(0);
+	
+}
+
+int CONSULTARPYME(){
+	int i;
+    for (i = 0; i < P; i++) {
+		if (pyme_arr[i].name_PYME == search){
+			return i;
+		}
+    }
+	return -1;
+}
+
